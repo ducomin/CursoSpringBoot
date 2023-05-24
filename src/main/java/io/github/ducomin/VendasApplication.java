@@ -36,6 +36,9 @@ public class VendasApplication {
 			System.out.println("Buscando clientes");
 			clientes.findByNomeLike("Cli").forEach(System.out::println);
 
+			System.out.println("Buscando clientes (query)");
+			clientes.encontrarPorNome("Cli").forEach(System.out::println);
+
 			todosClientes = clientes.findAll();
 			if(todosClientes.isEmpty()){
 				System.out.println("Nenhum cliente encontrado.");
