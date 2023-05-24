@@ -1,4 +1,4 @@
-package domain.entity;
+package io.github.ducomin.domain.entity;
 
 import java.math.BigDecimal;
 
