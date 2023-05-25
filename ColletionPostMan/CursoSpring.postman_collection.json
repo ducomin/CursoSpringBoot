@@ -50,7 +50,7 @@
 			"response": []
 		},
 		{
-			"name": "New Request",
+			"name": "IncluirCliente",
 			"request": {
 				"method": "POST",
 				"header": [],
@@ -73,6 +73,36 @@
 					"path": [
 						"api",
 						"clientes"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "AlterarCliente",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nome\": \"Eduardo Comin Alterado\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/clientes/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"clientes",
+						"1"
 					]
 				}
 			},
