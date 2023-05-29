@@ -230,7 +230,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8080/api/produtos",
+							"raw": "http://localhost:8080/api/produtos?descricao=leite&preco=30",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -243,13 +243,11 @@
 							"query": [
 								{
 									"key": "descricao",
-									"value": "leite",
-									"disabled": true
+									"value": "leite"
 								},
 								{
 									"key": "preco",
-									"value": "29.91",
-									"disabled": true
+									"value": "30"
 								}
 							]
 						}

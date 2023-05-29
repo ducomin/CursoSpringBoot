@@ -25,11 +25,11 @@ import io.github.ducomin.domain.repository.Produtos;
 public class ProdutoController {
 
 	@Autowired
-	private Produtos produtos;
+	private Produtos repository;
 
 	@GetMapping("{id}")
 	public Produto getProdutoById(@PathVariable Integer id) {
-		return produtos
+		return repository
 				.findById(id)
 				.orElseThrow(() ->
 						new ResponseStatusException(HttpStatus.NOT_FOUND,
@@ -39,16 +39,16 @@ public class ProdutoController {
 	@PostMapping
 	@ResponseStatus(HttpStatus.CREATED)
 	public Produto save(@RequestBody Produto produto) {
-		return produtos.save(produto);
+		return repository.save(produto);
 	}
 
 	@DeleteMapping("{id}")
 	@ResponseStatus(HttpStatus.NO_CONTENT)
 	public void delete(@PathVariable Integer id) {
-		produtos.findById(id)
+		repository.findById(id)
 				.map(produto -> {
-					produtos.delete(produto);
-					return produto;
+					repository.delete(produto);
+					return Void.TYPE;
 				})
 				.orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND,
 						"Produto não encontrado"));
@@ -59,11 +59,11 @@ public class ProdutoController {
 	@ResponseStatus(HttpStatus.NO_CONTENT)
 	public void update(@PathVariable Integer id,
 			@RequestBody Produto produto) {
-		produtos
+		repository
 				.findById(id)
 				.map(produtoExistente -> {
 					produto.setId(produtoExistente.getId());
-					produtos.save(produto);
+					repository.save(produto);
 					return produtoExistente;
 				}).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND,
 						"Produto não encontrado"));
@@ -78,6 +78,6 @@ public class ProdutoController {
 						ExampleMatcher.StringMatcher.CONTAINING);
 
 		Example example = Example.of(filtro, matcher);
-		return produtos.findAll(example);
+		return repository.findAll(example);
 	}
 }
