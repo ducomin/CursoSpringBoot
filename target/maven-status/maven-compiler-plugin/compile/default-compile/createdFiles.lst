@@ -1,1 +1,3 @@
 io\github\ducomin\VendasApplication.class
+io\github\ducomin\rest\controller\dto\PedidoDTO.class
+io\github\ducomin\rest\controller\dto\ItemPedidoDTO.class

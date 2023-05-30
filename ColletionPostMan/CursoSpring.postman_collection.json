@@ -255,6 +255,40 @@
 					"response": []
 				}
 			]
+		},
+		{
+			"name": "Pedidos",
+			"item": [
+				{
+					"name": "IncluirPedidos",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"cliente\": 1,\r\n    \"total\": 300.00,\r\n    \"items\": [\r\n        {\r\n            \"produto\": 2,\r\n            \"quantidade\": 30\r\n        }\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/pedidos",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"pedidos"
+							]
+						}
+					},
+					"response": []
+				}
+			]
 		}
 	]
 }
