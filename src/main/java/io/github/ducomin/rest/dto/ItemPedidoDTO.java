@@ -1,4 +1,4 @@
-package io.github.ducomin.rest.controller.dto;
+package io.github.ducomin.rest.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

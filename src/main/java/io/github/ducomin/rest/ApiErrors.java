@@ -1,4 +1,4 @@
-package io.github.ducomin.rest.controller;
+package io.github.ducomin.rest;
 
 import java.util.Arrays;
 import java.util.List;

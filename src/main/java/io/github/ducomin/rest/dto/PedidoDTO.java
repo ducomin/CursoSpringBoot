@@ -1,4 +1,4 @@
-package io.github.ducomin.rest.controller.dto;
+package io.github.ducomin.rest.dto;
 
 import java.math.BigDecimal;
 import java.util.List;

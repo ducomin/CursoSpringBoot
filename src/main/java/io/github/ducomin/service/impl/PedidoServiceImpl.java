@@ -5,7 +5,6 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -18,9 +17,10 @@ import io.github.ducomin.domain.repository.Clientes;
 import io.github.ducomin.domain.repository.ItemsPedido;
 import io.github.ducomin.domain.repository.Pedidos;
 import io.github.ducomin.domain.repository.Produtos;
+import io.github.ducomin.exception.PedidoNaoEncontradoException;
 import io.github.ducomin.exception.RegraNegocioException;
-import io.github.ducomin.rest.controller.dto.ItemPedidoDTO;
-import io.github.ducomin.rest.controller.dto.PedidoDTO;
+import io.github.ducomin.rest.dto.ItemPedidoDTO;
+import io.github.ducomin.rest.dto.PedidoDTO;
 import io.github.ducomin.service.PedidoService;
 import lombok.RequiredArgsConstructor;
 
@@ -58,6 +58,17 @@ public class PedidoServiceImpl implements PedidoService {
 	@Override
 	public Optional<Pedido> obterPedidoCompleto(Integer id) {
 		return repository.findByIdFetchItens(id);
+	}
+
+	@Override
+	@Transactional
+	public void atualizaStatus( Integer id, StatusPedido statusPedido ) {
+		repository
+				.findById(id)
+				.map( pedido -> {
+					pedido.setStatus(statusPedido);
+					return repository.save(pedido);
+				}).orElseThrow(() -> new PedidoNaoEncontradoException() );
 	}
 
 	private List<ItemPedido> converterItems(Pedido pedido, List<ItemPedidoDTO> items){
