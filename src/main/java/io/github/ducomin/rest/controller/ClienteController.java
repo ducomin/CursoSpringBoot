@@ -16,6 +16,8 @@ import java.util.List;
 import java.util.Optional;
 import java.util.function.Supplier;
 
+import javax.validation.Valid;
+
 @RestController
 @RequestMapping("/api/clientes")
 public class ClienteController {
@@ -37,7 +39,7 @@ public class ClienteController {
 
 	@PostMapping
 	@ResponseStatus(HttpStatus.CREATED)
-	public Cliente save(@RequestBody Cliente cliente) {
+	public Cliente save(@RequestBody @Valid Cliente cliente) {
 		return clientes.save(cliente);
 	}
 
